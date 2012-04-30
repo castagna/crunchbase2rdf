@@ -22,14 +22,13 @@ import com.freebase.json.JSON;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.vocabulary.RDFS;
 import com.talis.labs.crunchbase2rdf.AbstractRdfExtractor;
-import com.talis.labs.crunchbase2rdf.Run;
 
-public class BlogRdfExtractor extends AbstractRdfExtractor {
+public class NameRdfExtractor extends AbstractRdfExtractor {
 
-	public BlogRdfExtractor() {
-		super("blog_url");
+	public NameRdfExtractor() {
+		super("name");
 	}
 
 	@Override
@@ -37,10 +36,9 @@ public class BlogRdfExtractor extends AbstractRdfExtractor {
 		Model model = ModelFactory.createDefaultModel();
 		Object object = json.object().get(name());
 		if ( object != null ) {
-			String blog_url = object.toString().trim();
-			if ( blog_url.length() > 0 ) {
-				Resource blog = ResourceFactory.createResource(blog_url);
-				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, name()), blog);
+			String name = object.toString().trim();
+			if ( name.length() > 0 ) {
+				model.add ( subject, RDFS.label, name );
 			}			
 		}
 		return model;

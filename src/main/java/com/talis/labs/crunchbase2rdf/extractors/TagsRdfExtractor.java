@@ -40,7 +40,7 @@ public class TagsRdfExtractor extends AbstractRdfExtractor {
 			String tags_str = object.toString().trim();
 			if ( tags_str.length() > 0 ) {
 				for ( String tag : tags_str.split(",") ) {
-					model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS, "tag"), tag.trim());					
+					model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, "tag"), tag.trim());					
 				}
 			}			
 		}

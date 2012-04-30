@@ -39,7 +39,7 @@ public class CategoryRdfExtractor extends AbstractRdfExtractor {
 		if ( object != null ) {
 			String category = object.toString().trim();
 			if ( category.length() > 0 ) {
-				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS, name()), category);
+				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, name()), category);
 				
 				// http://www.crunchbase.com/companies?q=web
 				

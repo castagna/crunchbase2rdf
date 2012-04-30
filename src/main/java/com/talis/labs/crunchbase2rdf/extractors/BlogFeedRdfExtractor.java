@@ -26,10 +26,10 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.talis.labs.crunchbase2rdf.AbstractRdfExtractor;
 import com.talis.labs.crunchbase2rdf.Run;
 
-public class BlogRdfExtractor extends AbstractRdfExtractor {
+public class BlogFeedRdfExtractor extends AbstractRdfExtractor {
 
-	public BlogRdfExtractor() {
-		super("blog_url");
+	public BlogFeedRdfExtractor() {
+		super("blog_feed_url");
 	}
 
 	@Override
@@ -37,9 +37,9 @@ public class BlogRdfExtractor extends AbstractRdfExtractor {
 		Model model = ModelFactory.createDefaultModel();
 		Object object = json.object().get(name());
 		if ( object != null ) {
-			String blog_url = object.toString().trim();
-			if ( blog_url.length() > 0 ) {
-				Resource blog = ResourceFactory.createResource(blog_url);
+			String blog_feed_url = object.toString().trim();
+			if ( blog_feed_url.length() > 0 ) {
+				Resource blog = ResourceFactory.createResource(blog_feed_url);
 				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, name()), blog);
 			}			
 		}

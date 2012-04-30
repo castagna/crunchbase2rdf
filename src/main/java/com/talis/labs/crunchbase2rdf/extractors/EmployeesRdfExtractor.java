@@ -39,7 +39,7 @@ public class EmployeesRdfExtractor extends AbstractRdfExtractor {
 		if ( object != null ) {
 			String number_of_employees = object.toString().trim();
 			if ( number_of_employees.length() > 0 ) {
-				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS, name()), number_of_employees);
+				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, name()), number_of_employees);
 			}			
 		}
 		return model;

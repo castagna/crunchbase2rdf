@@ -39,7 +39,7 @@ public class TwitterRdfExtractor extends AbstractRdfExtractor {
 		if ( object != null ) {
 			String username = object.toString().trim();
 			if ( username.length() > 0 ) {
-				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS, name()), username);
+				model.add(subject, ResourceFactory.createProperty(Run.CRUNCHBASE_NS_SCHEMA, name()), username);
 			}			
 		}
 		return model;
